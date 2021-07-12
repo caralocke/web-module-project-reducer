@@ -7,10 +7,17 @@ import CalcButton from './components/CalcButton';
 // Within App.js, import the useReducer hook, our application's reducer and initialState object.
 import { useReducer } from 'react'; 
 import reducer, { initialState } from './reducers'
+// Import the `addOne` action creator into App.js.
+import { addOne } from './actions'
 
 function App() {
   // Use useReducer hook to get access to the application state and the dispatch function.
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  // Within `App.js`, create an event handler connected to the 1 button's `onClick` method.
+  const handleAddOne = () => {
+    dispatch(addOne()) //Within your event handler, dispatch the `addOne` action creator.
+  }
 
   return (
     <div className="App">
@@ -35,7 +42,7 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1}/>
+              <CalcButton onClick={handleAddOne} value={1}/> {/* Within `App.js`, create an event handler connected to the 1 button's `onClick` method. */}
               <CalcButton value={2}/>
               <CalcButton value={3}/>
             </div>
