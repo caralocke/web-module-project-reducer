@@ -11,7 +11,7 @@ import reducer, { initialState } from './reducers'
 import { addOne, changeOperation } from './actions' // Import in your new action creator into `App.js.`
 // Import the `applyNumber` action creator into `App.js.`
 // Within `App.js,` import in your clearDisplay action creator.
-import { applyNumber, clearDisplay } from './actions';
+import { applyNumber, clearDisplay, addMemory, getMemory, clearMemory } from './actions'; //Import addMemory, getMemory, clearMemory
 
 function App() {
   // Use useReducer hook to get access to the application state and the dispatch function.
@@ -36,6 +36,21 @@ function App() {
     dispatch(clearDisplay())
   }
 
+  //Create an event handler to handle the dispatch of addMemory
+  const handleAddMemory = () => {
+    dispatch(addMemory())
+  }
+
+  //Create an event handler to handle the dispatch of getMemory
+  const handleGetMemory = () => {
+    dispatch(getMemory())
+  }
+
+  //Create an event handler to handle the dispatch of clearMemory
+  const handleClearMemory = () => {
+    dispatch(clearMemory())
+  }
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -53,9 +68,12 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              {/* Attach the handleAddMemory event handler to the onClick of the `M+` button. */}
+              <CalcButton onClick={() => {handleAddMemory()}} value={"M+"}/>
+              {/* Attach the handleGetMemory event handler to the onClick of the `MR` button. */}
+              <CalcButton onClick={() => {handleGetMemory()}} value={"MR"}/>
+              {/* Attach the handleClearMemory event handler to the onClick of the `MC` button. */}
+              <CalcButton onClick={() => {handleClearMemory()}} value={"MC"}/>
             </div>
 
             <div className="row">
