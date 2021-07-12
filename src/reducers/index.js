@@ -1,10 +1,17 @@
 import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from './../actions';
+// Test that you are connected to state by changing the initialState value in your reducer to:
 
 export const initialState = {
-    total: 100,
-    operation: "*",
-    memory: 100
+    total: 0,
+    operation: "+",
+    memory: 0
 }
+
+// export const initialState = {
+//     total: 100,
+//     operation: "*",
+//     memory: 100
+// }
 
 const calculateResult = (num1, num2, operation) => {
     switch(operation) {

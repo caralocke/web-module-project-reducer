@@ -22,10 +22,10 @@ function App() {
         <div className="col-md-12 d-flex justify-content-center">
           <form name="Cal">
             
-            <TotalDisplay value={0}/>
+            <TotalDisplay value={state.total}/> {/*Replace "0" with a reference to `state.total` when passing a value to our TotalDisplay component. */}
             <div className="row details">
-              <span id="operation"><b>Operation:</b> X</span>
-              <span id="memory"><b>Memory:</b> 0</span>
+              <span id="operation"><b>Operation:</b> {state.operation}</span> {/*Replace "X" with a reference to `state.operation` within the operation element. */}
+              <span id="memory"><b>Memory:</b> {state.memory}</span> {/*Replace "0" with a reference to `state.memory` within the memory element. */}
             </div>
             
             <div className="row">
