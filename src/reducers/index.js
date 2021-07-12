@@ -1,4 +1,8 @@
 import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from './../actions';
+
+//Make sure to import `CLEAR_DISPLAY` constant into your reducer file.
+import { CLEAR_DISPLAY } from './../actions';
+
 // Test that you are connected to state by changing the initialState value in your reducer to:
 
 export const initialState = {
@@ -43,6 +47,12 @@ const reducer = (state, action) => {
                 ...state,
                 operation: action.payload
             });
+            //  Within `./reducers/index,` add in a case for `CLEAR_DISPLAY`. Clear display should set the total value in state to 0.
+        case(CLEAR_DISPLAY):
+            return({
+                ...state,
+                total: 0
+            })    
             
         default:
             return state;

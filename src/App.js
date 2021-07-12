@@ -10,7 +10,8 @@ import reducer, { initialState } from './reducers'
 // Import the `addOne` action creator into App.js.
 import { addOne, changeOperation } from './actions' // Import in your new action creator into `App.js.`
 // Import the `applyNumber` action creator into `App.js.`
-import { applyNumber } from './actions';
+// Within `App.js,` import in your clearDisplay action creator.
+import { applyNumber, clearDisplay } from './actions';
 
 function App() {
   // Use useReducer hook to get access to the application state and the dispatch function.
@@ -28,6 +29,11 @@ function App() {
   // Create and attach event handlers to the `+`, `-` and `*` buttons that dispatch your new action creator. Make sure you pass in the appropriate operator string in each case.
   const handeChangeOperation = (operator) => {
     dispatch(changeOperation(operator))
+  }
+
+  // Create and connect an event handler to the "CE" button that dispatches your clearDisplay action creator.
+  const handleClearDisplay = () => {
+    dispatch(clearDisplay())
   }
 
   return (
@@ -82,7 +88,8 @@ function App() {
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"}/>
+              {/*  Create and connect an event handler to the "CE" button that dispatches your clearDisplay action creator. */}
+              <CalcButton onClick={() => {handleClearDisplay()}} value={"CE"}/>
             </div>
 
           </form>
