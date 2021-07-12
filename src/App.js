@@ -9,6 +9,8 @@ import { useReducer } from 'react';
 import reducer, { initialState } from './reducers'
 // Import the `addOne` action creator into App.js.
 import { addOne } from './actions'
+// Import the `applyNumber` action creator into `App.js.`
+import { applyNumber } from './actions';
 
 function App() {
   // Use useReducer hook to get access to the application state and the dispatch function.
@@ -17,6 +19,10 @@ function App() {
   // Within `App.js`, create an event handler connected to the 1 button's `onClick` method.
   const handleAddOne = () => {
     dispatch(addOne()) //Within your event handler, dispatch the `addOne` action creator.
+  }
+  // Create an eventhandler that takes in a number as an argument and dispatches `applyNumber` with it.
+  const handleChange = (number) => {
+    dispatch(applyNumber(number))
   }
 
   return (
@@ -42,21 +48,25 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton onClick={handleAddOne} value={1}/> {/* Within `App.js`, create an event handler connected to the 1 button's `onClick` method. */}
-              <CalcButton value={2}/>
-              <CalcButton value={3}/>
+              <CalcButton onClick={() => {handleChange(1)}} value={1}/> {/* Within `App.js`, create an event handler connected to the 1 button's `onClick` method. */}
+              {/* 2nd comment: Remove or comment out the `addOne` event handler from the 1 button. */}
+              {/*3rd comment: Attach that eventhandler to the 1 button's `onClick` method, passing in a 1 as an argument. */}
+
+              {/*  Connect all other number buttons to your new event handler, passing in their respective values. */}
+              <CalcButton onClick={() => {handleChange(2)}} value={2}/>
+              <CalcButton onClick={() => {handleChange(3)}} value={3}/>
             </div>
 
             <div className="row">
-              <CalcButton value={4}/>
-              <CalcButton value={5}/>
-              <CalcButton value={6}/>
+              <CalcButton onClick={() => {handleChange(4)}} value={4}/>
+              <CalcButton onClick={() => {handleChange(5)}} value={5}/>
+              <CalcButton onClick={() => {handleChange(6)}} value={6}/>
             </div>
 
             <div className="row">
-              <CalcButton value={7}/>
-              <CalcButton value={8}/>
-              <CalcButton value={9}/>
+              <CalcButton onClick={() => {handleChange(7)}} value={7}/>
+              <CalcButton onClick={() => {handleChange(8)}} value={8}/>
+              <CalcButton onClick={() => {handleChange(9)}} value={9}/>
             </div>
 
             <div className="row">
