@@ -4,8 +4,13 @@ import './App.css';
 
 import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
+// Within App.js, import the useReducer hook, our application's reducer and initialState object.
+import { useReducer } from 'react'; 
+import reducer, { initialState } from './reducers'
 
 function App() {
+  // Use useReducer hook to get access to the application state and the dispatch function.
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <div className="App">
